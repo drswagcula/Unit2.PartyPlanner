@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Birthday Bash",
+        "date": "2025-03-10",
+        "time": "18:00",
+        "location": "New York",
+        "description": "A fun birthday party!"
+    },
+    {
+        "name": "Music Festival",
+        "date": "2025-04-15",
+        "time": "12:00",
+        "location": "Los Angeles",
+        "description": "Live music and food trucks."
+    }
+]

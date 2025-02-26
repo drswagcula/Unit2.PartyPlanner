@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Planner</title>
+    <script src="party.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: black;
+            margin-bottom: 20px;
+        }
+        form {
+            background-color: lightblue;
+            padding: 20px;
+            margin: 20px;
+            width: 100%;
+            max-width: 500px; /* Added max width for better responsiveness */
+            border-radius: 10px;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%; /* Makes inputs and button take up full width */
+            box-sizing: border-box;
+        }
+        button {
+            background-color: red;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 30px;
+            box-sizing: border-box;
+        }
+        li {
+            background-color: green;
+            color: black;
+            padding: 15px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .delete-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Party Planner</h1>
+        <form id="event-form">
+            <input type="text" name="name" placeholder="Party Name" required>
+            <input type="date" name="date" required>
+            <input type="time" name="time" required>
+            <input type="text" name="location" placeholder="Location" required>
+            <input type="text" name="description" placeholder="Description" required>
+            <button type="submit">Add Party</button>
+        </form>
+        <ul id="events-list"></ul>
+    </div>
+    
+</body>
+</html>
