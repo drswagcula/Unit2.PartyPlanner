@@ -4,18 +4,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const url="https://fsa-crud-2aa9294fe819.herokuapp.com/api/2412-ftb-mt-web-pt/events";
     
     // Fetch and display all parties
-    function fetchEvents() {
-        fetch(url)
-            .then(response => response.json())
-            .then(events => {
-                console.log("events", events);
-                eventsList.innerHTML = "";
-                events.data.forEach( renderEvent);
-            })
-            .catch(error => console.error("events.json", error));
+    async function fetchEvents() {
+        try {
+            const response = await fetch(url);
+            const events = await response.json();
+            console.log("events", events);
+            eventsList.innerHTML = "";
+            events.data.forEach( renderEvent);
+            
+        } catch (error) {
+            console.error("Error fetching events:", error);
+        }
     }
     // Fetch events 
-    fetchEvents(url);
+    fetchEvents();
     
     // Render a single event
     function renderEvent(event) {
@@ -39,19 +41,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // Add new event
-    eventForm.addEventListener("submit", function(event) {
+    eventForm.addEventListener("submit", async function(event) {
         event.preventDefault();
         
         const formData = new FormData(event.target);
         const newEvent = {
             name: formData.get("name"),
-            date: formData.get("date"),
-            time: formData.get("time"),
+            date: new Date(formData.get("date")),
             location: formData.get("location"),
-            description: formData.get("description"),
-            id: generateEventId() // Generate a unique ID for the new event
-        };
-
+            description: formData.get("description"),}
+console.log(newEvent);
+const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newEvent)
+});
+console.log(response);
         // Render the newly added event with a delete button
         renderEvent(newEvent);
         
@@ -64,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Event ID is missing!");
             return;
         }
-        
+        console.log(id);
         fetch(`${url}/${id}`, {
             method: "DELETE"
         })
